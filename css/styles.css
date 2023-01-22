@@ -1,0 +1,123 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: rgb(250, 245, 210);
+}
+
+header {
+  height: min-content;
+}
+
+header a {
+  text-decoration: none;
+  color: rgb(40, 90, 85);
+  font-size: 2rem;
+  font-family: "Times New Roman", Times, serif;
+}
+
+header a:hover {
+  color: #0085a1;
+}
+
+a:hover {
+  color: rgb(180, 170, 5) !important;
+}
+
+footer {
+  padding-top: 20px;
+  padding-bottom: 60px;
+  text-align: center;
+}
+
+footer .links {
+  margin: 20px;
+}
+
+footer .links > a {
+  color: #636b6f;
+  padding: 0 25px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: rgb(230, 225, 90);
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+footer .links > a:hover {
+  color: #0085a1;
+}
+
+.copyright {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0px 25px;
+  color: rgb(108, 117, 125);
+  font-family: "Times New Roman", Times, serif;
+  background-color: rgb(230, 225, 90);
+  border-radius: 5px;
+}
+
+/* form {
+  margin: 10px;
+} */
+
+li {
+  font-size: 1.5rem;
+  font-family: "Times New Roman", Times, serif;
+  margin-right: 15px;
+}
+
+.container {
+  margin-top: 30px;
+}
+
+.contact {
+  max-width: 450px;
+}
+
+.carousel-caption {
+  background-color: rgba(105, 105, 105, 0.7);
+  padding: 10px;
+  border-radius: 20px;
+}
+
+small {
+  font-size: 1.2rem;
+}
+
+input {
+  margin: 5px;
+}
+
+#username {
+  background-color: rgb(230, 225, 90);
+  padding: 5px 20px;
+  border-radius: 10px;
+  height: min-content;
+  align-items: center;
+  margin-top: 3px;
+}
+
+#site-name {
+  margin: 30px;
+}
+
+#login {
+  margin-top: 15px;
+}
+
+form {
+  margin-bottom: 0px;
+}
+
+#error {
+  margin-bottom: 30px;
+}
+
+#discount {
+  color: red;
+  font-weight: bolder;
+}
