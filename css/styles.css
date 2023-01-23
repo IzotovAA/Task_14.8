@@ -72,10 +72,12 @@ li {
 
 .container {
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .contact {
   max-width: 450px;
+  margin-bottom: 20px;
 }
 
 .carousel-caption {
@@ -85,7 +87,7 @@ li {
 }
 
 small {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 input {
@@ -117,7 +119,28 @@ form {
   margin-bottom: 30px;
 }
 
-#discount {
-  color: red;
+.discount {
+  color: rgb(200, 0, 0);
+  font-weight: bolder;
+}
+
+del {
+  position: relative;
+  color: #000;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+del:before {
+  content: "";
+  border-bottom: 1px solid red;
+  position: absolute;
+  width: 100%;
+  height: 70%;
+  transform: rotate(-12deg);
+}
+
+.price-discount {
+  color: rgb(200, 0, 0);
   font-weight: bolder;
 }

@@ -6,6 +6,12 @@ if ($auth) {
     header('Location: ../index.php');
 }
 
+if (!is_file('users.txt')) {
+    $reg_time = time();
+    $example_user = ['user1' => ['birthday' => '1987-02-01', 'password' => sha1('user1'), 'regtime' => $reg_time]];
+    file_put_contents('users.txt', json_encode($example_user, true));
+}
+
 ?>
 
 <html lang="en">
@@ -41,53 +47,17 @@ if ($auth) {
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="../index.php">Главная</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="lorem.php">Lorem</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="ipsum.php">Ipsum</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="dolor.php">Dolor</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="elit.php">Elit</a>
-                        </li>
+
                     </ul>
 
-                    <?php
-                    if (!$auth) { ?>
-
-                        <div class="d-flex justify-content-end">
-                            <form action="registration.php" method="POST">
-                                <input type="submit" value="Зарегестрироваться" />
-                            </form>
-                            <form action="login.php" method="POST">
-                                <input type="submit" value="Войти" />
-                            </form>
-                        </div>
-
-                    <?php
-                    } ?>
-
-                    <?php
-                    if ($auth) {
-                        $user_name = $_SESSION['login'];
-                    ?>
-
-                        <div class="d-flex justify-content-end ">
-                            <div class="d-flex justify-content-center" id="username">
-                                <?php
-                                echo $user_name;
-                                ?>
-                            </div>
-                            <form action="clear-session.php" method="POST">
-                                <input type="submit" value="Выйти" />
-                            </form>
-                        </div>
-
-                    <?php
-                    } ?>
+                    <div class="d-flex justify-content-end">
+                        <form action="registration.php" method="POST">
+                            <input type="submit" value="Зарегестрироваться" />
+                        </form>
+                        <form action="login.php" method="POST">
+                            <input type="submit" value="Войти" />
+                        </form>
+                    </div>
 
                 </div>
             </div>

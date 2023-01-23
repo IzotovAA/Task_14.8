@@ -15,8 +15,6 @@ if ($auth) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SPA-салон "КОМФОРТ"</title>
 
-
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
 
     <link rel="stylesheet" href="../css/styles.css" />
@@ -40,57 +38,21 @@ if ($auth) {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="../index.php">Главная</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="lorem.php">Lorem</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="ipsum.php">Ipsum</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="dolor.php">Dolor</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="elit.php">Elit</a>
-                        </li>
                     </ul>
 
-                    <?php
-                    if (!$auth) { ?>
-
-                        <div class="d-flex justify-content-end">
-                            <form action="registration.php" method="POST">
-                                <input type="submit" value="Зарегестрироваться" />
-                            </form>
-                            <form action="login.php" method="POST">
-                                <input type="submit" value="Войти" />
-                            </form>
-                        </div>
-
-                    <?php
-                    } ?>
-
-                    <?php
-                    if ($auth) {
-                        $user_name = $_SESSION['login'];
-                    ?>
-
-                        <div class="d-flex justify-content-end ">
-                            <div class="d-flex justify-content-center" id="username">
-                                <?php
-                                echo $user_name;
-                                ?>
-                            </div>
-                            <form action="clear-session.php" method="POST">
-                                <input type="submit" value="Выйти" />
-                            </form>
-                        </div>
-
-                    <?php
-                    } ?>
+                    <div class="d-flex justify-content-end">
+                        <form action="registration.php" method="POST">
+                            <input type="submit" value="Зарегестрироваться" />
+                        </form>
+                        <form action="login.php" method="POST">
+                            <input type="submit" value="Войти" />
+                        </form>
+                    </div>
 
                 </div>
             </div>
@@ -111,6 +73,65 @@ if ($auth) {
                 <input name="submit" type="submit" value="Зарегестрироваться" />
             </form>
         </div>
+
+        <div class="container">
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus sequi
+                eaque suscipit maxime totam ab cumque pariatur. Debitis quos corrupti tenetur.
+                Modi aliquid pariatur magnam ipsam rerum aliquam nihil aspernatur explicabo
+                hic optio earum veniam, amet impedit quos perspiciatis, incidunt vero
+                exercitationem facere totam minima quas sequi doloremque! Natus placeat
+                eveniet dignissimos cum dolorum, ipsum officiis ea tenetur! Officiis architecto
+                placeat itaque nisi cum ipsa aperiam vero eos omnis mollitia dolorum, culpa
+                impedit suscipit maiores cupiditate soluta labore, modi eveniet. Commodi rem
+                adipisci amet non blanditiis odit sint porro nulla numquam dolore consequuntur
+                excepturi, atque explicabo cum officiis aspernatur vel.
+            </p>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="../img/3.jpg" class="card-img-top" alt="pic" />
+                        <div class="card-body">
+                            <h5 class="card-title">Distinctio</h5>
+                            <p class="card-text">
+                                Nisi at distinctio alias vel adipisci? Voluptatibus, nesciunt?
+                                Obcaecati nesciunt natus aperiam sint magni commodi doloribus
+                                voluptatem enim porro fuga laudantium neque optio, totam qui
+                                explicabo dolorem praesentium quam maxime. Natus recusandae
+                                minus itaque vel animi adipisci at neque eius. Repellendus
+                                incidunt quod magni voluptates quidem nobis officiis odio,
+                                tempora ipsa iusto rerum, nam tenetur pariatur! Expedita,
+                                tempora? Voluptatum veniam harum distinctio?
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Цена: 2500 р.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="../img/8.jpg" class="card-img-top" alt="pic" />
+                        <div class="card-body">
+                            <h5 class="card-title">Doloremque</h5>
+                            <p class="card-text">
+                                Doloremque laboriosam harum reiciendis molestiae aliquid a
+                                incidunt, excepturi autem voluptas iure at velit. Incidunt
+                                modi hic perspiciatis temporibus quos sapiente tempora magnam.
+                                Esse odit adipisci molestiae deserunt, harum quae autem quam
+                                impedit minima quibusdam quia maxime neque quos! Commodi autem
+                                earum amet architecto odit, consequuntur provident rem?
+                                Dolorum hic ullam officia repellat porro?
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Цена: 3000 р.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -182,6 +203,7 @@ if ($auth) {
                 <span class="visually-hidden">Следующий</span>
             </button>
         </div>
+
     </main>
 
     <footer>

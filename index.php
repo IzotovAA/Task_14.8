@@ -1,25 +1,26 @@
 <?php
-
+session_start();
 // include($_SERVER['DOCUMENT_ROOT'] . "/process.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/pages/functions.php");
+
 // include "process.php";
 // print_r($_SESSION) . "\n";
-session_start();
+
 // print_r($_SESSION);
 $auth = $_SESSION['auth'] ?? null;
 
-if (!$auth) {
-    echo 'не авторизован' . "\n";
-    // header('Location: login.php');
-}
+// if (!$auth) {
+//     echo 'не авторизован' . "\n";
+//     header('Location: login.php');
+// }
 
-echo 'авторизация - ' . ($auth ? 'true' : 'false') . "\n";
+// echo 'авторизация - ' . ($auth ? 'true' : 'false') . "\n";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<a href="pages/functions.php">функции</a>
+<!-- <a href="pages/functions.php">функции</a> -->
 
 <head>
     <meta charset="UTF-8" />
@@ -48,26 +49,15 @@ echo 'авторизация - ' . ($auth ? 'true' : 'false') . "\n";
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.php">Главная</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="pages/lorem.php">Lorem</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="pages/ipsum.php">Ipsum</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="pages/dolor.php">Dolor</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="pages/elit.php">Elit</a>
-                        </li>
-                    </ul>
 
                     <?php
                     if (!$auth) { ?>
+
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index.php">Главная</a>
+                            </li>
+                        </ul>
 
                         <div class="d-flex justify-content-end">
                             <form action="pages/registration.php" method="POST">
@@ -86,6 +76,25 @@ echo 'авторизация - ' . ($auth ? 'true' : 'false') . "\n";
                         // $user_name = $_SESSION['login'];
                         $user_name = getCurrentUser();
                     ?>
+
+
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index.php">Главная</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="pages/lorem.php">Lorem</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="pages/ipsum.php">Ipsum</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="pages/dolor.php">Dolor</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="pages/elit.php">Elit</a>
+                            </li>
+                        </ul>
 
                         <div class="d-flex justify-content-end ">
                             <div class="d-flex justify-content-center" id="username">
@@ -112,6 +121,7 @@ echo 'авторизация - ' . ($auth ? 'true' : 'false') . "\n";
     </header>
 
     <main>
+
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
