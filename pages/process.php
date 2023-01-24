@@ -1,48 +1,32 @@
 <?php
 
-// session_start();
-// $auth = $_SESSION['auth'] ?? null;
-
 include($_SERVER['DOCUMENT_ROOT'] . "/pages/functions.php");
-// include($_SERVER['DOCUMENT_ROOT'] . "/pages/reg-process.php");
-// include "functions.php";
 
 $username = $_POST['login'] ?? null;
 $password = $_POST['password'] ?? null;
-// $users = getUsersList();
 
 if (null !== $username || null !== $password) {
 
-    // $download_array = json_decode(file_get_contents('users.txt'), true);
     $download_array = getUsersList();
 
+    // проверка существование пользователя в базе и совпадения введёного пароля
     if (existsUser($username) && checkPassword($username, $password)) {
-        // Если пароль из базы совпадает с паролем из формы
-        // if (sha1($password) === $users[$username]['password']) {
-        // if (sha1($password) === $download_array[$username]['password']) {
 
-        // Стартуем сессию:
         session_start();
 
         // Пишем в сессию информацию о том, что мы авторизовались:
         $_SESSION['auth'] = true;
 
-        // print_r($_SESSION);
-
-        // Пишем в сессию логин и id пользователя
-        // $_SESSION['id'] = $users[$username]['id'];
+        // Пишем в сессию логин и время входа пользователя
         $_SESSION['login'] = $username;
         $_SESSION['entrytime'] = time();
 
-        // echo 'Логин и пароль корректны' . "\n";
-        // echo 'id сессии - ' . $_SESSION['id'] . "\n";
-        // echo 'логин - ' . $_SESSION['login'] . "\n";
-
-        // print_r($_SESSION);
+        // переадресация в личный кабинет
         header('Location: my-account.php');
     }
 }
 
+// если логин или пароль не верный сообщаем об этом
 ?>
 <!DOCTYPE html>
 
@@ -194,14 +178,3 @@ if (null !== $username || null !== $password) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
-
-
-<?php
-        
-// header('Location: login.php');
-
-// $auth = $_SESSION['auth'] ?? null;
-
-// echo $auth ? 'аторизован' : 'не авторизован';
-
-// header('Location: ../index.php');

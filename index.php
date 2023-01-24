@@ -1,26 +1,16 @@
 <?php
 session_start();
-// include($_SERVER['DOCUMENT_ROOT'] . "/process.php");
+
+// подключаем файл с функциями
 include($_SERVER['DOCUMENT_ROOT'] . "/pages/functions.php");
 
-// include "process.php";
-// print_r($_SESSION) . "\n";
-
-// print_r($_SESSION);
+// присваиваем информацию о наличии либо осутствии авторизации в переменную
 $auth = $_SESSION['auth'] ?? null;
 
-// if (!$auth) {
-//     echo 'не авторизован' . "\n";
-//     header('Location: login.php');
-// }
-
-// echo 'авторизация - ' . ($auth ? 'true' : 'false') . "\n";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- <a href="pages/functions.php">функции</a> -->
 
 <head>
     <meta charset="UTF-8" />
@@ -51,7 +41,8 @@ $auth = $_SESSION['auth'] ?? null;
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                     <?php
-                    if (!$auth) { ?>
+                    if (!$auth) { // если пользователь не авторизован доступна только главная страница, вход и регистрация
+                    ?>
 
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
@@ -72,11 +63,9 @@ $auth = $_SESSION['auth'] ?? null;
                     } ?>
 
                     <?php
-                    if ($auth) {
-                        // $user_name = $_SESSION['login'];
+                    if ($auth) { // если пользователь авторизован доступны и другие страницы
                         $user_name = getCurrentUser();
                     ?>
-
 
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">

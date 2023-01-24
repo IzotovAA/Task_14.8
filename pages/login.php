@@ -2,15 +2,22 @@
 
 session_start();
 $auth = $_SESSION['auth'] ?? null;
+
+// если пользователь авторизован переадресовывает на главную страницу
 if ($auth) {
     header('Location: ../index.php');
 }
 
+// если попытке входа не существовал текстовый файл с базой пользователей,
+// то создаёт новый файл с одним пользователем по умолчанию
 if (!is_file('users.txt')) {
     $reg_time = time();
     $example_user = ['user1' => ['birthday' => '1987-02-01', 'password' => sha1('user1'), 'regtime' => $reg_time]];
+
+    // кодируем ассоциативный массив в срочку и записываем в текстовый файл
     file_put_contents('users.txt', json_encode($example_user, true));
 }
+// ...
 
 ?>
 

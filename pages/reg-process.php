@@ -1,39 +1,46 @@
 <?php
-// session_start();
-// $auth = $_SESSION['auth'] ?? null;
 
-// include($_SERVER['DOCUMENT_ROOT'] . "/pages/users.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/pages/functions.php");
 
+// передача данных из формы регистрации в переменные
 $username = $_POST['login'] ?? null;
 $password1 = $_POST['password1'] ?? null;
 $password2 = $_POST['password2'] ?? null;
 $birthday = $_POST['birthday'] ?? null;
 
+// флаг для проверки базы пользователей на уже сущестующее имя
 $user_check = false;
 
+// если на момент регистрации не существовал текстовый файл с базой пользователей,
+// то создаёт новый файл с одним пользователем по умолчанию
 if (!is_file('users.txt')) {
     $reg_time = time();
     $example_user = ['user1' => ['birthday' => '1987-02-01', 'password' => sha1('user1'), 'regtime' => $reg_time]];
+
+    // кодируем ассоциативный массив в срочку и записываем в текстовый файл
     file_put_contents('users.txt', json_encode($example_user, true));
 }
+// ...
 
-// $download_array = json_decode(file_get_contents('users.txt'), true);
+// загрузка массива пользователей из текстового файла
 $download_array = getUsersList();
 
+// проверка массива пользователей, если имя из формы регистрации уже есть в массиве
+// вернёт false и остановит цикл, если такого имя нет вернёт true
 foreach ($download_array as $key => $value) {
     if ($key === $username) {
         $user_check = false;
         break;
     } else $user_check = true;
 }
+// ...
 
+// если такое имя пользователя уже существует информирует об этом
 if (!$user_check) {
 
 ?>
 
     <!DOCTYPE html>
-
     <html lang="en">
 
     <head>
@@ -186,41 +193,25 @@ if (!$user_check) {
 
 }
 
-// echo $user_check ? 'true' : 'false';
-
+// проверяет флаг уникальности имени и совпадение пароля при регистрации
 if ($user_check && $password1 === $password2) {
-    // array_push($users, $username['birthday'[$birthday]], $username['password'[sha1($password)]]);
-    // print_r($users);
     $reg_time = time();
-    $new_user_arr = [$username => ['birthday' => $birthday, 'password' => sha1($password1), 'regtime' => $reg_time]];
-    // $new_array = array_merge($users, $new_username_arr);
 
+    // создаём массив заготовку с информацией о новом пользователе
+    $new_user_arr = [$username => ['birthday' => $birthday, 'password' => sha1($password1), 'regtime' => $reg_time]];
+
+    // добавляем массив нового пользователя в загруженный ранее массив существующих пользователей
     $upd_users = array_merge($download_array, $new_user_arr);
-    // array_push($users, $username_arr);
+
+    // запускаем сессию, вводим в неё необходимую информацию
     session_start();
     $_SESSION['auth'] = true;
     $_SESSION['login'] = $username;
-    $_SESSION['entrytime'] = time();
+    $_SESSION['entrytime'] = time(); // время входа по unix
 
-
-    // file_put_contents('users1.php', print_r($new_array, true));
-
+    // перезаписываем текстовый файл с информацией о пользователях
     file_put_contents('users.txt', json_encode($upd_users, true));
 
+    // переадресация в личный кабинет
     header('Location: my-account.php');
 }
-// else echo 'пароль не подтверждён';
-// else header('Location: registration.php');
-
-// array_push($users, $username['birthday'[$birthday]], $username['password'[$password]]);
-// echo $_SESSION['auth'] ? 'Авторизован' : 'Не авторизован';
-// print_r($users);
-// print_r($new_array);
-
-
-
-
-// $download_array = json_decode(file_get_contents('users.txt'));
-// print_r($download_array);
-
-// header('Location: ../index.php');

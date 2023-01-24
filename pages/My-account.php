@@ -4,6 +4,8 @@ $auth = $_SESSION['auth'] ?? null;
 
 include($_SERVER['DOCUMENT_ROOT'] . "/pages/functions.php");
 
+// если пользователь не авторизован переадресуем на главную страницу
+// иначе присваиваем имя пользователя в переменную
 if (!$auth) {
     header('Location: ../index.php');
 } else $user_name = $_SESSION['login'];
@@ -75,15 +77,20 @@ if (!$auth) {
     </header>
 
     <main>
+
+        <!-- Отображаем приветствие -->
         <div class="container">
             <h3>Личный кабинет </h3>
             <h5>Добро пожаловать
 
+                <!-- Если у пользователя ДР отображаем поздравление -->
+                <!-- Если нет, то отображаем оставшееся до ДР время -->
                 <?php
                 echo $user_name . '.' . "\n";
                 getUserBirthday();
                 ?>
 
+                <!-- Отображаем индивидуальную акцию и время до её окончания -->
             </h5>
             <h5 class="discount">
                 <?php

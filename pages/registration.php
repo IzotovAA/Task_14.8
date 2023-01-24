@@ -1,6 +1,8 @@
 <?php
 session_start();
 $auth = $_SESSION['auth'] ?? null;
+
+// если пользователь авторизован переадресует на главную страницу
 if ($auth) {
     header('Location: ../index.php');
 }
