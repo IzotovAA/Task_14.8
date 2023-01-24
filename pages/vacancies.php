@@ -4,9 +4,9 @@ $auth = $_SESSION['auth'] ?? null;
 
 include($_SERVER['DOCUMENT_ROOT'] . "/pages/functions.php");
 
-if (!$auth) {
-  header('Location: ../index.php');
-} else $user_name = getCurrentUser();
+if ($auth) {
+  $user_name = getCurrentUser();
+}
 
 ?>
 
@@ -41,41 +41,73 @@ if (!$auth) {
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="../index.php">Главная</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="lorem.php">Lorem</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="ipsum.php">Ipsum</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="dolor.php">Dolor</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="elit.php">Elit</a>
-            </li>
-          </ul>
 
-          <div class="d-flex justify-content-end ">
-            <div class="d-flex justify-content-center" id="username">
-              <?php
-              echo $user_name;
-              ?>
+          <?php
+          if (!$auth) { // если пользователь не авторизован доступна только главная страница, вход и регистрация
+          ?>
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="../index.php">Главная</a>
+              </li>
+            </ul>
+
+            <div class="d-flex justify-content-end">
+              <form action="registration.php" method="POST">
+                <input type="submit" value="Зарегестрироваться" />
+              </form>
+              <form action="login.php" method="POST">
+                <input type="submit" value="Войти" />
+              </form>
             </div>
 
-            <form action="My-account.php" method="POST">
-              <input type="submit" value="Личный кабинет" />
-            </form>
+          <?php
+          } ?>
 
-            <form action="clear-session.php" method="POST">
-              <input type="submit" value="Выйти" />
-            </form>
-          </div>
+          <?php
+          if ($auth) { // если пользователь авторизован доступны и другие страницы
+            $user_name = getCurrentUser();
+          ?>
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="../index.php">Главная</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="lorem.php">Lorem</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="ipsum.php">Ipsum</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="dolor.php">Dolor</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="elit.php">Elit</a>
+              </li>
+            </ul>
+
+            <div class="d-flex justify-content-end ">
+              <div class="d-flex justify-content-center" id="username">
+                <?php
+                echo $user_name;
+                ?>
+              </div>
+
+              <form action="My-account.php" method="POST">
+                <input type="submit" value="Личный кабинет" />
+              </form>
+
+              <form action="clear-session.php" method="POST">
+                <input type="submit" value="Выйти" />
+              </form>
+            </div>
+
+          <?php
+          } ?>
 
         </div>
+
       </div>
     </nav>
   </header>
